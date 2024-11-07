@@ -1,0 +1,33 @@
+﻿<div class="container">
+    <h1>Proveedores</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de editar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proveedor in Model)
+            {
+                <tr>
+                    <td>@proveedor.Idproveedor</td>
+                    <td>@proveedor.Nombre</td>
+                    <td>@proveedor.Direccion</td>
+                    <td>@proveedor.Telefono</td>
+                    <td>@proveedor.Email</td>
+                    <td>
+                        <form method="get" action="@Url.Action("EditarProveedor", "Home", new { id = proveedor.Idproveedor })">
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

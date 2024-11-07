@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-4 text-primary" style="font-family: Calibri;">Secure Vision</h1>
+    </div>
+    <div class="row">
+        <!-- Clientes -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-2x mb-2"></i>
+                    <h5 class="card-title">Clientes</h5>
+                    <a asp-action="Cliente" class="btn btn-outline-light btn-block mt-3">Ir a Clientes</a>
+                </div>
+            </div>
+        </div>
+        <!-- Proveedores -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-truck fa-2x mb-2"></i>
+                    <h5 class="card-title">Proveedores</h5>
+                    <a asp-action="Proveedor" class="btn btn-outline-light btn-block mt-3">Ir a Proveedores</a>
+                </div>
+            </div>
+        </div>
+        <!-- Compra -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-shopping-cart fa-2x mb-2"></i>
+                    <h5 class="card-title">Compra</h5>
+                    <a asp-action="Compra" class="btn btn-outline-light btn-block mt-3">Ir a Compra</a>
+                </div>
+            </div>
+        </div>
+        <!-- Departamento IT -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-desktop fa-2x mb-2"></i>
+                    <h5 class="card-title">Departamento IT</h5>
+                    <a asp-action="DepartamentoIT" class="btn btn-outline-light btn-block mt-3">Ir a Departamento IT</a>
+                </div>
+            </div>
+        </div>
+        <!-- Lista Empleados -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-users-cog fa-2x mb-2"></i>
+                    <h5 class="card-title">Lista Empleados</h5>
+                    <a asp-action="Empleado" class="btn btn-outline-light btn-block mt-3">Ir a Empleados</a>
+                </div>
+            </div>
+        </div>
+        <!-- Detalle de Venta -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-invoice-dollar fa-2x mb-2"></i>
+                    <h5 class="card-title">Detalle de Venta</h5>
+                    <a asp-action="Ventas" class="btn btn-outline-light btn-block mt-3">Ir a Ventas</a>
+                </div>
+            </div>
+        </div>
+        <!-- Inventario -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-pills fa-2x mb-2"></i>
+                    <h5 class="card-title">Inventario</h5>
+                    <a asp-action="Medicamento" class="btn btn-outline-light btn-block mt-3">Ir a Inventario</a>
+                </div>
+            </div>
+        </div>
+        <!-- Venta -->
+        <div class="col-md-3 mb-4">
+            <div class="card" style="background-color: #6f42c1; color: white;">
+                <div class="card-body text-center">
+                    <i class="fas fa-cash-register fa-2x mb-2"></i>
+                    <h5 class="card-title">Venta</h5>
+                    <a asp-action="DetalleVentaInventario" class="btn btn-outline-light btn-block mt-3">Ir a Venta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Icono de Chatbot -->
+<div id="chatbotIcon" onclick="toggleChatbot()" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;">
+    <img src="https://img.icons8.com/fluency/48/000000/chat.png" alt="Chatbot Icon" />
+</div>
+
+<!-- Contenedor del Chatbot -->
+<div id="chatbotContainer" style="display: none; position: fixed; bottom: 80px; right: 20px; width: 320px; background: #f5f5f5; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); z-index: 1000;">
+    <div style="background-color: #007aff; color: white; padding: 10px; border-top-left-radius: 15px; border-top-right-radius: 15px; display: flex; justify-content: space-between; align-items: center;">
+        Chatbot
+        <span style="cursor: pointer;" onclick="toggleChatbot()">&times;</span>
+    </div>
+    <div id="chatContent" style="padding: 10px; height: 220px; overflow-y: auto;">
+        <!-- Mensajes del chatbot -->
+    </div>
+    <div style="padding: 10px; display: flex;">
+        <input type="text" id="userInput" placeholder="Escribe una pregunta..." style="flex-grow: 1; padding: 10px; border-radius: 30px; border: 1px solid #ddd; margin-right: 5px;" />
+        <button onclick="sendQuestion()" style="padding: 10px 15px; background-color: #007aff; color: white; border: none; border-radius: 30px;">Enviar</button>
+    </div>
+</div>
+
+<script>
+    const faq = {
+        saludo: ["Hola, ¿cómo puedo ayudarte hoy?", "¡Hola! ¿En qué te gustaría recibir ayuda?", "¡Bienvenido a Secure Vision! ¿Qué consulta tienes?"],
+        despedida: ["Gracias por contactarnos, ¡que tengas un excelente día!", "Fue un placer ayudarte, ¡nos vemos pronto!"],
+        CCTV: ["Un sistema de CCTV te permite monitorear áreas críticas y prevenir incidentes. ¿Te interesa saber más sobre los tipos de cámaras?",
+            "Nuestros sistemas de CCTV mejoran la seguridad. ¿Necesitas ayuda con la instalación o configuración?"],
+        control_acceso: ["Ofrecemos controles de acceso con biometría, tarjetas y control remoto. ¿Te gustaría saber cuál se ajusta mejor a tus necesidades?"],
+        fibra_optica: ["La fibra óptica brinda alta velocidad de internet, ideal para transmisión de datos y videovigilancia. ¿Te gustaría más detalles?"]
+    };
+
+    function toggleChatbot() {
+        const chatbot = document.getElementById('chatbotContainer');
+        chatbot.style.display = chatbot.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function getBotResponse(question) {
+        question = question.toLowerCase();
+        if (question.includes("hola") || question.includes("buenas")) {
+            return faq.saludo[Math.floor(Math.random() * faq.saludo.length)];
+        } else if (question.includes("adios") || question.includes("gracias")) {
+            return faq.despedida[Math.floor(Math.random() * faq.despedida.length)];
+        } else if (question.includes("cctv") || question.includes("cámaras")) {
+            return faq.CCTV[Math.floor(Math.random() * faq.CCTV.length)];
+        } else if (question.includes("control de acceso") || question.includes("acceso")) {
+            return faq.control_acceso[Math.floor(Math.random() * faq.control_acceso.length)];
+        } else if (question.includes("fibra óptica") || question.includes("internet")) {
+            return faq.fibra_optica[Math.floor(Math.random() * faq.fibra_optica.length)];
+        } else {
+            return "Lo siento, no tengo una respuesta específica para eso. ¿Te gustaría saber más sobre nuestros servicios de CCTV, control de acceso o fibra óptica?";
+        }
+    }
+
+    function sendQuestion() {
+        const input = document.getElementById('userInput');
+        const question = input.value.trim();
+        const chatContent = document.getElementById('chatContent');
+
+        if (question) {
+            const userMessage = document.createElement('div');
+            userMessage.textContent = question;
+            userMessage.style = "background-color: #007aff; color: white; padding: 10px; border-radius: 12px; margin-bottom: 10px; text-align: right;";
+            chatContent.appendChild(userMessage);
+
+            const botMessage = document.createElement('div');
+            botMessage.textContent = getBotResponse(question);
+            botMessage.style = "background-color: #f1f1f1; padding: 10px; border-radius: 12px; margin-bottom: 10px;";
+            chatContent.appendChild(botMessage);
+
+            chatContent.scrollTop = chatContent.scrollHeight;
+            input.value = '';
+        }
+    }
+</script>

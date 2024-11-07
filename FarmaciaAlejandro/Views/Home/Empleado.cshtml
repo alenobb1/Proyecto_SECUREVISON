@@ -1,0 +1,48 @@
+﻿<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-4 text-primary" style="font-family: Calibri;">Farmacia El Buen Samaritano</h1>
+    </div>
+    <div class="row">
+        <!-- Agregar Empleado -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-plus fa-2x mb-2"></i>
+                    <h5 class="card-title">Agregar Empleado</h5>
+                    <a asp-action="CrearEmpleado" class="btn btn-outline-light btn-block mt-3">Ir a Agregar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Ver Empleados -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-2x mb-2"></i>
+                    <h5 class="card-title">Ver Empleados</h5>
+                    <a asp-action="VerEmpleados" class="btn btn-outline-light btn-block mt-3">Ir a Empleados</a>
+                </div>
+            </div>
+        </div>
+        <!-- Editar Empleado -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-edit fa-2x mb-2"></i>
+                    <h5 class="card-title">Editar Empleado</h5>
+                    <a asp-action="EditarEmpleadoGeneral" class="btn btn-outline-light btn-block mt-3">Ir a Editar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Eliminar Empleado -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-minus fa-2x mb-2"></i>
+                    <h5 class="card-title">Eliminar Empleado</h5>
+                    <a asp-action="EliminarEmpleado" class="btn btn-outline-light btn-block mt-3">Ir a Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

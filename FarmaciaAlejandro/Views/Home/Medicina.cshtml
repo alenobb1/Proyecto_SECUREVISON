@@ -1,0 +1,59 @@
+﻿@model List<MedicinaFarmacia>
+
+<div class="container">
+    <h1>Medicamentos</h1>
+
+    <form asp-controller="Home" asp-action="CrearMedicina" method="post" class="mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" id="Nombre" name="Nombre" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Descripcion">Descripción:</label>
+                    <input type="text" id="Descripcion" name="Descripcion" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Precio">Precio:</label>
+                    <input type="text" id="Precio" name="Precio" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Stock">Stock:</label>
+                    <input type="text" id="Stock" name="Stock" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var medicamento in Model)
+            {
+                <tr>
+                    <td>@medicamento.Nombre</td>
+                    <td>@medicamento.Descripcion</td>
+                    <td>@medicamento.Precio</td>
+                    <td>@medicamento.Stock</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

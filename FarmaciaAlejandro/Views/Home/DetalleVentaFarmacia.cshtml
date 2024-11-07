@@ -1,0 +1,63 @@
+﻿@model List<DetalleVentaFarmacia>
+
+@{
+    var ListaMedicina = new List<MedicinaFarmacia>();
+
+    if (ViewBag.ListaMedicina != null)
+    {
+        ListaMedicina = (List<MedicinaFarmacia>)ViewBag.ListaMedicina;
+    }
+
+    var ListaCliente = new List<Cliente>();
+
+    if (ViewBag.ListaClienteFarmacia != null)
+    {
+        ListaCliente = (List<Cliente>)ViewBag.ListaClienteFarmacia;
+    }
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Nueva Venta de Medicamentos</h1>
+
+    <form asp-controller="Home" asp-action="CrearVenta" method="post" class="mb-4">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <label for="IDMedicina" class="form-label">Medicamento</label>
+                    <select id="IDMedicina" name="IDMedicina" class="form-select" required>
+                        <option value="" disabled selected>Seleccione un medicamento</option>
+                        @foreach (var Nedicina in ListaMedicina)
+                        {
+                            <option value="@Nedicina.IDMedicamento">
+                                @Nedicina.Nombre Precio: @Nedicina.Precio  - Disponible: @Nedicina.Stock
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <label for="IdCliente" class="form-label">Cliente</label>
+                    <select id="IdCliente" name="IdCliente" class="form-select" required>
+                        <option value="" disabled selected>Seleccione un cliente</option>
+                        @foreach (var Cliente in ListaCliente)
+                        {
+                            <option value="@Cliente.Idcliente">
+                                @Cliente.Nombre
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <label for="Cantidad" class="form-label">Cantidad</label>
+                    <input required type="number" id="Cantidad" name="Cantidad" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary w-100">Agregar Medicamento</button>
+            </div>
+        </div>
+    </form>
+</div>

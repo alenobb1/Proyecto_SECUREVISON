@@ -1,0 +1,55 @@
+﻿
+<div class="container">
+    <h1>Clientes</h1>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de eliminar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.Idcliente</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Apellido</td>
+                    <td>@cliente.Direccion</td>
+                    <td>@cliente.Telefono</td>
+                    <td>@cliente.Email</td>
+                    <td>
+                        <button onclick="eliminarCliente(@cliente.Idcliente)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function eliminarCliente(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
+                // Hacer una petición HTTP para eliminar el cliente
+                fetch('/Home/EliminarCliente?id=' + id, {
+                    method: 'DELETE'
+                }).then(function (response) {
+                    if (response.ok) {
+                        // Redireccionar a la acción Cliente en el controlador Home
+                        window.location.href = '/Home/Cliente';
+                    } else {
+                        alert('Error al eliminar el cliente.');
+                    }
+                });
+            }
+        }
+    </script>
+
+</div>
+

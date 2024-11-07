@@ -1,0 +1,47 @@
+﻿@model List<DepartamentoFarmacia>
+
+<div class="container">
+    <h1>Departamentos de Farmacia</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de eliminar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var departamento in Model)
+            {
+                <tr>
+                    <td>@departamento.IDDepartamento</td>
+                    <td>@departamento.Nombre</td>
+                    <td>@departamento.Descripcion</td>
+                    <td>
+                        <button onclick="eliminarDepartamento(@departamento.IDDepartamento)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function eliminarDepartamento(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este departamento?')) {
+                // Hacer una petición HTTP para eliminar el departamento
+                fetch('/Home/EliminarDepartamento?id=' + id, {
+                    method: 'DELETE'
+                }).then(function (response) {
+                    if (response.ok) {
+                        // Redireccionar a la acción DepartamentoFarmacia en el controlador Home
+                        window.location.href = '/Home/DepartamentoFarmacia';
+                    } else {
+                        alert('Error al eliminar el departamento.');
+                    }
+                });
+            }
+        }
+    </script>
+</div>

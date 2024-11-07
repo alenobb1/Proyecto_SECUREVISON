@@ -1,0 +1,25 @@
+﻿@model FarmaciaAlejandro.Models.EmpleadoFarmacia
+
+<h2>Editar Empleado</h2>
+
+<form method="post" action="@Url.Action("EditarEmpleado", "Home")">
+    <div class="form-group">
+        <input type="hidden" id="IdEmpleado" name="IdEmpleado" value="@Html.Raw(Model.IdEmpleado)" class="form-control" />
+
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" value="@Html.Raw(Model.Nombre)" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Apellido">Apellido:</label>
+        <input type="text" id="Apellido" name="Apellido" value="@Html.Raw(Model.Apellido)" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Puesto">Puesto:</label>
+        <input type="text" id="Puesto" name="Puesto" value="@Html.Raw(Model.puesto)" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Salario">Salario:</label>
+        <input type="text" id="Salario" name="Salario" value="@Html.Raw(Model.salario)" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

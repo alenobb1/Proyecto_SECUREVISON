@@ -1,0 +1,49 @@
+﻿<div class="container">
+    <h1>Empleados</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.IdEmpleado</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.puesto</td>
+                    <td>@empleado.salario</td>
+                    <td>
+                        <button onclick="eliminarEmpleado(@empleado.IdEmpleado)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function eliminarEmpleado(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este empleado?')) {
+                // Hacer una petición HTTP para eliminar el empleado
+                fetch('/Home/EliminarEmpleado?id=' + id, {
+                    method: 'DELETE'
+                }).then(function (response) {
+                    if (response.ok) {
+                        // Redireccionar a la acción Empleado en el controlador Home
+                        window.location.href = '/Home/Empleado';
+                    } else {
+                        alert('Error al eliminar el empleado.');
+                    }
+                });
+            }
+        }
+    </script>
+</div>

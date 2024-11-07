@@ -1,0 +1,29 @@
+﻿<div class="container">
+    <h1>Departamentos de Farmacia</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de editar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var departamento in Model)
+            {
+                <tr>
+                    <td>@departamento.IDDepartamento</td>
+                    <td>@departamento.Nombre</td>
+                    <td>@departamento.Descripcion</td>
+                    <td>
+                        <form method="get" action="@Url.Action("EditarDepartamento", "Home", new { id = departamento.IDDepartamento })">
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

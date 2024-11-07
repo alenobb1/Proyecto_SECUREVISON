@@ -1,0 +1,48 @@
+﻿<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-4 text-primary" style="font-family: Calibri;">SECURE VISION</h1>
+    </div>
+    <div class="row">
+        <!-- Agregar Proveedor -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-truck-loading fa-2x mb-2"></i>
+                    <h5 class="card-title">Agregar Proveedor</h5>
+                    <a asp-action="CrearProveedor" class="btn btn-outline-light btn-block mt-3">Ir a Agregar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Ver Proveedores -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-truck fa-2x mb-2"></i>
+                    <h5 class="card-title">Ver Proveedores</h5>
+                    <a asp-action="VerProveedores" class="btn btn-outline-light btn-block mt-3">Ir a Proveedores</a>
+                </div>
+            </div>
+        </div>
+        <!-- Editar Proveedor -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-edit fa-2x mb-2"></i>
+                    <h5 class="card-title">Editar Proveedor</h5>
+                    <a asp-action="EditarProveedorGeneral" class="btn btn-outline-light btn-block mt-3">Ir a Editar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Eliminar Proveedor -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-trash-alt fa-2x mb-2"></i>
+                    <h5 class="card-title">Eliminar Proveedor</h5>
+                    <a asp-action="EliminarProveedor" class="btn btn-outline-light btn-block mt-3">Ir a Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

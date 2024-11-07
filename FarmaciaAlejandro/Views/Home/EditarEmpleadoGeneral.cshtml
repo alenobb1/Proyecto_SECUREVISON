@@ -1,0 +1,33 @@
+﻿<div class="container">
+    <h1>Empleados</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.IdEmpleado</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.puesto</td>
+                    <td>@empleado.salario</td>
+                    <td>
+                        <form method="get" action="@Url.Action("EditarEmpleado", "Home", new { id = empleado.IdEmpleado })">
+                            <button type="submit">Editar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

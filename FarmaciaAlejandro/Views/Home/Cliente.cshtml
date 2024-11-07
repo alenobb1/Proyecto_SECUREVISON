@@ -1,0 +1,47 @@
+﻿<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4 mb-4 text-primary" style="font-family: Calibri;">SECURE VISION</h1>
+    </div>
+    <div class="row">
+        <!-- Agregar Cliente -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-plus fa-2x mb-2"></i>
+                    <h5 class="card-title">Agregar Cliente</h5>
+                    <a asp-action="CrearCliente" class="btn btn-outline-light btn-block mt-3">Ir a Agregar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Ver Clientes -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-2x mb-2"></i>
+                    <h5 class="card-title">Ver Clientes</h5>
+                    <a asp-action="VerClientes" class="btn btn-outline-light btn-block mt-3">Ir a Clientes</a>
+                </div>
+            </div>
+        </div>
+        <!-- Editar Cliente -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-edit fa-2x mb-2"></i>
+                    <h5 class="card-title">Editar Cliente</h5>
+                    <a asp-action="EditarClienteGeneral" class="btn btn-outline-light btn-block mt-3">Ir a Editar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Eliminar Cliente -->
+        <div class="col-md-3 mb-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-minus fa-2x mb-2"></i>
+                    <h5 class="card-title">Eliminar Cliente</h5>
+                    <a asp-action="EliminarCliente" class="btn btn-outline-light btn-block mt-3">Ir a Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

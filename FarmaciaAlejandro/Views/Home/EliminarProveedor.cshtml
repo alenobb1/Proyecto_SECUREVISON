@@ -1,0 +1,49 @@
+﻿<div class="container">
+    <h1>Proveedores</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Acciones</th> <!-- Nueva columna para el botón de eliminar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proveedor in Model)
+            {
+                <tr>
+                    <td>@proveedor.Idproveedor</td>
+                    <td>@proveedor.Nombre</td>
+                    <td>@proveedor.Direccion</td>
+                    <td>@proveedor.Telefono</td>
+                    <td>@proveedor.Email</td>
+                    <td>
+                        <button onclick="eliminarProveedor(@proveedor.Idproveedor)">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function eliminarProveedor(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este proveedor?')) {
+                // Hacer una petición HTTP para eliminar el proveedor
+                fetch('/Home/EliminarProveedor?id=' + id, {
+                    method: 'DELETE'
+                }).then(function (response) {
+                    if (response.ok) {
+                        // Redireccionar a la acción Proveedor en el controlador Home
+                        window.location.href = '/Home/Proveedor';
+                    } else {
+                        alert('Error al eliminar el proveedor.');
+                    }
+                });
+            }
+        }
+    </script>
+</div>
